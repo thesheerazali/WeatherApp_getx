@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app_getx/controllers/home_screen_controller.dart';
 
+import 'Widgets/current_weather.dart';
 import 'Widgets/header.dart';
+import 'Widgets/weather_detail.dart';
 
 class HomeScreen extends GetView<HomeScreenController> {
   @override
@@ -23,32 +25,19 @@ class HomeScreen extends GetView<HomeScreenController> {
                 : ListView(
                     padding: EdgeInsets.symmetric(
                         horizontal: Get.width * 0.08,
-                        vertical: Get.height * 0.04),
+                        vertical: Get.height * 0.06),
                     scrollDirection: Axis.vertical,
                     children: [
-                      Header(),
+                      const Header(),
                       SizedBox(
-                        height: 30,
+                        height: Get.height * .1,
                       ),
-                      Obx(() {
-                        final weather = controller.weather;
+                      CurrentWeather(),
+                        SizedBox(
+                        height: Get.height * .1,
+                      ),
 
-                        // Display weather data
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Image.asset(
-                                "assets/weather/${weather.value?.weather[0].icon}.png"),
-                            Text(
-                              '${weather.value?.main.temp.round() ?? "20"}',
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 120,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        );
-                      })
+                      WeatherDetail(),
                     ],
                   ),
           ),

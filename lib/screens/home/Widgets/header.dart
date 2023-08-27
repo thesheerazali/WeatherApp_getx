@@ -10,7 +10,7 @@ class Header extends GetView<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
     String date = DateFormat("yMMMMd").format(DateTime.now());
-    return Column(
+    return  Obx(() => Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -35,6 +35,6 @@ class Header extends GetView<HomeScreenController> {
           style: TextStyle(fontSize: 15, color: Colors.white54),
         ),
       ],
-    );
+    ));
   }
 }

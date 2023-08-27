@@ -27,10 +27,7 @@ class HomeScreenController extends GetxController {
   void onInit() {
     super.onInit();
     if (isLoding.isTrue) {
-      _getUserLocation().then((_) {
-        fetchWeatherData();
-        getUserAdress();
-      });
+      _getUserLocation();
     }
   }
 
@@ -77,7 +74,13 @@ class HomeScreenController extends GetxController {
     ).then((value) {
       _latitude.value = value.latitude;
       _longitude.value = value.longitude;
+
+     return fetchWeatherData().then((value) {
+       getUserAdress();
       isLoding.value = false;
+     });
+
+     
     });
   }
 

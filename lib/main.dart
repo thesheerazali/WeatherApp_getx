@@ -19,10 +19,6 @@ class MyApp extends StatelessWidget {
        theme: ThemeData(
             textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme),
             useMaterial3: true,
-
-          // Set your primary color here
-            // hintColor: Color(0xfffe6d29), // You can also set the accent color
-            // Add other theme settings here
           ),
 
        getPages: RouteGenerator.getPages(),

@@ -15,13 +15,13 @@ class Header extends GetView<HomeScreenController> {
       children: [
         Text(
           controller.city.value,
-          style: const TextStyle(fontSize: 35),
+          style: const TextStyle(fontSize: 35, color: Colors.white),
         ),
         Row(
           children: [
             Text(
               controller.cityArea.value,
-              style: const TextStyle(fontSize: 15, color: Colors.black),
+              style: const TextStyle(fontSize: 15, color: Colors.white54),
             ),
             const Icon(
               Icons.location_on,
@@ -32,7 +32,7 @@ class Header extends GetView<HomeScreenController> {
         ),
         Text(
           date,
-          style: TextStyle(fontSize: 15, color: Colors.grey),
+          style: TextStyle(fontSize: 15, color: Colors.white54),
         ),
       ],
     );

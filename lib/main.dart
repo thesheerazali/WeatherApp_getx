@@ -20,22 +20,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeScreenController hoemController =
         Get.put(HomeScreenController(), permanent: true);
-    return Obx(() => hoemController.checkLoading().isTrue
-        ? const Center(
-            child: CircularProgressIndicator(),
-          )
-        : GetMaterialApp(
-            color: Colors.white,
-            debugShowCheckedModeBanner: false,
-            initialRoute: mainScreen,
-            theme: ThemeData(
-              textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme),
-              useMaterial3: true,
-            ),
-            getPages: RouteGenerator.getPages(),
-          ));
+    return GetMaterialApp(
+      color: Colors.white,
+      debugShowCheckedModeBanner: false,
+      initialRoute: splashScreen,
+      theme: ThemeData(
+        textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme),
+        useMaterial3: true,
+      ),
+      getPages: RouteGenerator.getPages(),
+    );
   }
 }
+
+//  GetPage(
+//           name: '/main', page: () => MainScreen(), binding: ScreenBidings()),
 
 class MainScreenController extends GetxController {
   var tabIndex = 0.obs;

@@ -20,7 +20,7 @@ class Header extends GetView<HomeScreenController> {
             Row(
               children: [
                 Text(
-                  controller.cityArea.value,
+                  controller.cityArea?.value ?? controller.city.value,
                   style: const TextStyle(fontSize: 15, color: Colors.black54),
                 ),
                 const Icon(

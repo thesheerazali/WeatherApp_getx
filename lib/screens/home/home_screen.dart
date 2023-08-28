@@ -12,7 +12,7 @@ class HomeScreen extends GetView<HomeScreenController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
+      body: Obx(() => controller.checkLoading().isTrue? Center(child:  CircularProgressIndicator(),): ListView(
         padding: EdgeInsets.symmetric(
             horizontal: Get.width * 0.08, vertical: Get.height * 0.06),
         scrollDirection: Axis.vertical,
@@ -30,7 +30,7 @@ class HomeScreen extends GetView<HomeScreenController> {
           ),
           WeatherDetail(),
         ],
-      ),
+      ),) 
     );
   }
 }

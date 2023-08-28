@@ -42,10 +42,10 @@ class CurrentWeather extends GetView<HomeScreenController> {
                 const Padding(
                   padding: EdgeInsets.only(bottom: 60),
                   child: Text(
-                    "°",
+                    "°C",
                     style: TextStyle(
                         color: Colors.blue,
-                        fontSize: 50,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
                 ),

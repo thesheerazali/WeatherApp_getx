@@ -120,7 +120,7 @@ class HomeScreenController extends GetxController {
   final RxDouble _latitude = 0.0.obs;
   final RxDouble _longitude = 0.0.obs;
   RxString city = ''.obs;
-  RxString cityArea = ''.obs;
+  RxString? cityArea = ''.obs;
   RxBool isLoding = true.obs;
 
   RxBool checkLoading() => isLoding;
@@ -169,7 +169,7 @@ class HomeScreenController extends GetxController {
     print(placeMark);
     Placemark place = placeMark[0];
     city.value = place.locality!;
-    cityArea.value = place.subLocality!;
+    cityArea!.value = place.subLocality!;
   }
 
    

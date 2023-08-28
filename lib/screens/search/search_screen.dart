@@ -4,6 +4,7 @@ import 'package:weather_app_getx/controllers/search_screen_controller.dart';
 import 'package:weather_app_getx/screens/search/search_weather_detail_screen.dart';
 
 class SearchScreen extends GetView<SearchScreenController> {
+  TextEditingController textEAD = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,6 +14,7 @@ class SearchScreen extends GetView<SearchScreenController> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
+              controller: textEAD,
               onChanged: (value) {
                 controller.searchText.value = value;
                 if (value.isEmpty) {
@@ -45,18 +47,20 @@ class SearchScreen extends GetView<SearchScreenController> {
                   itemBuilder: (context, index) {
                     final weather = controller.weatherList[index];
                     return ListTile(
-                      title: Text(
-                          'City: ${weather.name}, ${weather.sys!.country}'),
-                      subtitle: Text('Temperature: ${weather.main.temp}°C'),
-                      trailing: Text("humidity ${weather.main.humidity}"),
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              WeatherDetailScreen(weather: weather),
-                        ),
-                      ),
-                    );
+                        title: Text(
+                            'City: ${weather.name}, ${weather.sys!.country}'),
+                        subtitle: Text('Temperature: ${weather.main.temp}°C'),
+                        trailing: Text("humidity ${weather.main.humidity}"),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  WeatherDetailScreen(weather: weather),
+                            ),
+                          );
+                          textEAD.clear();
+                        });
                   },
                 );
               }

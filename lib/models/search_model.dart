@@ -1,4 +1,6 @@
 class WeatherModel {
+
+  
   WeatherModel({
     required this.coord,
     required this.weather,
@@ -12,7 +14,8 @@ class WeatherModel {
     required this.timezone,
     required this.id,
     required this.name,
-    required this.cod, required String cityName,
+    required this.cod,
+    required String cityName,
   });
   late final Coord coord;
   late final List<Weather> weather;
@@ -28,23 +31,28 @@ class WeatherModel {
   late final String name;
   late final int cod;
 
- WeatherModel.fromJson(Map<String, dynamic> json) {
-  coord = Coord.fromJson(json['coord'] ?? {});
-  weather = List<Weather>.from(
-    (json['weather'] as List<dynamic>?)?.map((x) => Weather.fromJson(x)) ?? []
-  );
-  base = json['base'] ?? '';
-  main = Main.fromJson(json['main'] ?? {});
-  visibility = json['visibility'] ?? 0;
-  wind = Wind.fromJson(json['wind'] ?? {});
-  clouds = Clouds.fromJson(json['clouds'] ?? {});
-  dt = json['dt'];
-  sys = Sys.fromJson(json['sys'] ?? {});
-timezone = json['timezone'] ?? 0; // Provide a default value if necessary
-id = json['id'] ?? 0; // Provide a default value if necessary
-name = json['name'] ?? '';
-cod = json['cod'] ?? 0; // Provide a default value if necessary
-}
+  WeatherModel.empty();
+
+  WeatherModel.fromJson(Map<String, dynamic> json) {
+    coord = Coord.fromJson(json['coord'] ?? {});
+   
+
+             final weatherJson = json['weather'] as List<dynamic>?; // Check if 'weather' key is present
+    weather = weatherJson != null
+        ? List<Weather>.from(weatherJson.map((x) => Weather.fromJson(x)))
+        : [];
+    base = json['base'] ?? '';
+    main = Main.fromJson(json['main'] ?? {});
+    visibility = json['visibility'] ?? 0;
+    wind = Wind.fromJson(json['wind'] ?? {});
+    clouds = Clouds.fromJson(json['clouds'] ?? {});
+    dt = json['dt'];
+    sys = Sys.fromJson(json['sys'] ?? {});
+    timezone = json['timezone'] ?? 0; // Provide a default value if necessary
+    id = json['id'] ?? 0; // Provide a default value if necessary
+    name = json['name'] ?? '';
+    cod = json['cod'] ?? 0; // Provide a default value if necessary
+  }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
@@ -73,7 +81,7 @@ class Coord {
   late final double lon;
   late final double lat;
 
-   Coord.fromJson(Map<String, dynamic> json) {
+  Coord.fromJson(Map<String, dynamic> json) {
     lon = (json['lon'] as num?)?.toDouble() ?? 0.0;
     lat = (json['lat'] as num?)?.toDouble() ?? 0.0;
   }
@@ -134,13 +142,19 @@ class Main {
   late final int humidity;
 
   Main.fromJson(Map<String, dynamic> json) {
-  temp = (json['temp'] as num?)?.toDouble() ?? 0.0; // Provide a default value if necessary
-  feelsLike = (json['feels_like'] as num?)?.toDouble() ?? 0.0; // Provide a default value if necessary
-  tempMin = (json['temp_min'] as num?)?.toDouble() ?? 0.0; // Provide a default value if necessary
-  tempMax = (json['temp_max'] as num?)?.toDouble() ?? 0.0; // Provide a default value if necessary
-  pressure = (json['pressure'] as int?) ?? 0; // Provide a default value if necessary
-  humidity = (json['humidity'] as int?) ?? 0; // Provide a default value if necessary
-}
+    temp = (json['temp'] as num?)?.toDouble() ??
+        0.0; // Provide a default value if necessary
+    feelsLike = (json['feels_like'] as num?)?.toDouble() ??
+        0.0; // Provide a default value if necessary
+    tempMin = (json['temp_min'] as num?)?.toDouble() ??
+        0.0; // Provide a default value if necessary
+    tempMax = (json['temp_max'] as num?)?.toDouble() ??
+        0.0; // Provide a default value if necessary
+    pressure =
+        (json['pressure'] as int?) ?? 0; // Provide a default value if necessary
+    humidity =
+        (json['humidity'] as int?) ?? 0; // Provide a default value if necessary
+  }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};

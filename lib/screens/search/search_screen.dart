@@ -35,6 +35,10 @@ class SearchScreen extends GetView<SearchScreenController> {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
+              } else if (controller.cityNotFound.value) {
+                return Center(
+                  child: Text('City not found'),
+                );
               } else {
                 return ListView.builder(
                   itemCount: controller.weatherList.length,

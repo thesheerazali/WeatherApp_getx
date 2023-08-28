@@ -28,7 +28,7 @@ class CurrentWeather extends GetView<HomeScreenController> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(
-              "assets/weather/${weather.value?.weather[0].icon}.png",
+              "assets/weather/${weather.value!.weather[0].icon}.png",
             ),
             Row(
               children: [

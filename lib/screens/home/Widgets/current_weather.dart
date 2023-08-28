@@ -15,9 +15,11 @@ class CurrentWeather extends GetView<HomeScreenController> {
         borderRadius: BorderRadius.circular(10),
         // Container background color with transparency
         boxShadow: [
-          BoxShadow(blurRadius: 5, color: Colors.transparent.withOpacity(0.3))
-        ], 
-      ), 
+          BoxShadow(
+              // blurRadius: 3,
+              color: const Color.fromARGB(255, 186, 204, 236).withOpacity(0.8))
+        ],
+      ),
       child: Obx(() {
         final weather = controller.weather;
 
@@ -26,14 +28,14 @@ class CurrentWeather extends GetView<HomeScreenController> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(
-              "assets/weather/${weather.value?.weather[0].icon ?? "02d"}.png",
+              "assets/weather/${weather.value?.weather[0].icon}.png",
             ),
             Row(
               children: [
                 Text(
                   '${weather.value?.main.temp.round() ?? "20"}',
                   style: const TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 100,
                       fontWeight: FontWeight.bold),
                 ),

@@ -9,18 +9,19 @@ class WeatherDetail extends GetView<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Container(
           padding: const EdgeInsets.all(10),
           height: 100,
-          width: 100,
+          width: Get.width * .25,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             // Container background color with transparency
             boxShadow: [
               BoxShadow(
-                  blurRadius: 5, color: Colors.transparent.withOpacity(0.3))
+                  color:
+                      const Color.fromARGB(255, 186, 204, 236).withOpacity(0.8))
             ],
           ),
           child: Obx(() {
@@ -37,15 +38,15 @@ class WeatherDetail extends GetView<HomeScreenController> {
                 Wrap(
                   children: [
                     Text(
-                      '${weather.value?.wind.speed}',
+                      '${weather.value?.wind.speed.round()}',
                       style: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 25,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w500),
                     ),
                     const Text('km/h',
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black54,
                             fontSize: 10,
                             fontWeight: FontWeight.bold))
                   ],
@@ -57,13 +58,16 @@ class WeatherDetail extends GetView<HomeScreenController> {
         Container(
           padding: const EdgeInsets.all(10),
           height: 100,
-          width: 100,
+          width: Get.width * .25,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             // Container background color with transparency
             boxShadow: [
               BoxShadow(
-                  blurRadius: 5, color: Colors.transparent.withOpacity(0.3))
+                
+                  
+                  color:
+                      const Color.fromARGB(255, 186, 204, 236).withOpacity(0.8))
             ],
           ),
           child: Obx(() {
@@ -82,13 +86,13 @@ class WeatherDetail extends GetView<HomeScreenController> {
                     Text(
                       '${weather.value?.clouds.all}',
                       style: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 25,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w500),
                     ),
                     const Text('%',
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black54,
                             fontSize: 10,
                             fontWeight: FontWeight.bold))
                   ],
@@ -100,13 +104,14 @@ class WeatherDetail extends GetView<HomeScreenController> {
         Container(
           padding: const EdgeInsets.all(10),
           height: 100,
-          width: 100,
+          width: Get.width * .25,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             // Container background color with transparency
             boxShadow: [
               BoxShadow(
-                  blurRadius: 5, color: Colors.transparent.withOpacity(0.3))
+                  color:
+                      const Color.fromARGB(255, 186, 204, 236).withOpacity(0.8))
             ],
           ),
           child: Obx(() {
@@ -125,13 +130,13 @@ class WeatherDetail extends GetView<HomeScreenController> {
                     Text(
                       '${weather.value?.main.humidity}',
                       style: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 25,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w500),
                     ),
                     const Text('%',
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black54,
                             fontSize: 10,
                             fontWeight: FontWeight.bold))
                   ],

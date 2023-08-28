@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:weather_app_getx/main.dart';
-import 'package:weather_app_getx/screens/search_screen.dart';
+import 'package:weather_app_getx/screens/search/search_screen.dart';
 import 'package:weather_app_getx/utils/screen_bidings.dart';
 
 import '../screens/home/home_screen.dart';

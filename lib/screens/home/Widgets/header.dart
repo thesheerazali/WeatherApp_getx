@@ -10,31 +10,31 @@ class Header extends GetView<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
     String date = DateFormat("yMMMMd").format(DateTime.now());
-    return  Obx(() => Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          controller.city.value,
-          style: const TextStyle(fontSize: 35, color: Colors.white),
-        ),
-        Row(
+    return Obx(() => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              controller.cityArea.value,
-              style: const TextStyle(fontSize: 15, color: Colors.white54),
+              controller.city.value,
+              style: const TextStyle(fontSize: 50, color: Colors.black),
             ),
-            const Icon(
-              Icons.location_on,
-              color: Colors.red,
-              size: 15,
+            Row(
+              children: [
+                Text(
+                  controller.cityArea.value,
+                  style: const TextStyle(fontSize: 15, color: Colors.black54),
+                ),
+                const Icon(
+                  Icons.location_on,
+                  color: Colors.red,
+                  size: 15,
+                ),
+              ],
+            ),
+            Text(
+              date,
+              style: TextStyle(fontSize: 15, color: Colors.black54),
             ),
           ],
-        ),
-        Text(
-          date,
-          style: TextStyle(fontSize: 15, color: Colors.white54),
-        ),
-      ],
-    ));
+        ));
   }
 }

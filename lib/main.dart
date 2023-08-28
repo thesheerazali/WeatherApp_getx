@@ -4,8 +4,9 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:weather_app_getx/constants/routes.dart';
+import 'package:weather_app_getx/controllers/home_screen_controller.dart';
 import 'package:weather_app_getx/screens/home/home_screen.dart';
-import 'package:weather_app_getx/screens/search_screen.dart';
+import 'package:weather_app_getx/screens/search/search_screen.dart';
 import 'package:weather_app_getx/utils/route_generator.dart';
 
 void main() {
@@ -17,15 +18,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: mainScreen,
-      theme: ThemeData(
-        textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme),
-        useMaterial3: true,
-      ),
-      getPages: RouteGenerator.getPages(),
-    );
+    HomeScreenController hoemController =
+        Get.put(HomeScreenController(), permanent: true);
+    return Obx(() => hoemController.checkLoading().isTrue
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : GetMaterialApp(
+            color: Colors.white,
+            debugShowCheckedModeBanner: false,
+            initialRoute: mainScreen,
+            theme: ThemeData(
+              textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme),
+              useMaterial3: true,
+            ),
+            getPages: RouteGenerator.getPages(),
+          ));
   }
 }
 
@@ -39,9 +47,21 @@ class MainScreen extends GetView<MainScreenController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(() => IndexedStack(
-            index: controller.tabIndex.value,
-            children: screens,
+      body: Obx(() => WillPopScope(
+            onWillPop: () async {
+              // Handle the back button press
+              if (controller.tabIndex.value != 0) {
+                controller.tabIndex.value = 0;
+
+                // Update the active tab
+                return false; // Prevent the default back navigation
+              }
+              return true;
+            },
+            child: IndexedStack(
+              index: controller.tabIndex.value,
+              children: screens,
+            ),
           )),
       bottomNavigationBar: Obx(
         () => GNav(
@@ -50,8 +70,8 @@ class MainScreen extends GetView<MainScreenController> {
             controller.tabIndex.value = index;
           },
           gap: 8,
-          backgroundColor: Colors.black,
-          color: Colors.white,
+          backgroundColor: Colors.white,
+          color: Colors.black,
           activeColor: Colors.blueAccent,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           tabs: const [

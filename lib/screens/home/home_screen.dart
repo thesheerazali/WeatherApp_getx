@@ -10,38 +10,26 @@ import 'Widgets/weather_detail.dart';
 class HomeScreen extends GetView<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/back8.jpg'), fit: BoxFit.fill),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: ListView(
+        padding: EdgeInsets.symmetric(
+            horizontal: Get.width * 0.08, vertical: Get.height * 0.06),
+        scrollDirection: Axis.vertical,
+        children: [
+          SizedBox(
+            height: Get.height * .05,
           ),
-          child: Obx(
-            () => controller.checkLoading().isTrue
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : ListView(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: Get.width * 0.08,
-                        vertical: Get.height * 0.06),
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      const Header(),
-                      SizedBox(
-                        height: Get.height * .1,
-                      ),
-                      CurrentWeather(),
-                        SizedBox(
-                        height: Get.height * .1,
-                      ),
-
-                      WeatherDetail(),
-                    ],
-                  ),
+          const Header(),
+          SizedBox(
+            height: Get.height * .1,
           ),
-        ),
+          CurrentWeather(),
+          SizedBox(
+            height: Get.height * .1,
+          ),
+          WeatherDetail(),
+        ],
       ),
     );
   }

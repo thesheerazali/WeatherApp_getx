@@ -1,6 +1,4 @@
 class WeatherModel {
-
-  
   WeatherModel({
     required this.coord,
     required this.weather,
@@ -18,7 +16,7 @@ class WeatherModel {
     required String cityName,
   });
   late final Coord coord;
-  late final List<Weather> weather;
+  List<Weather> weather = [];
   late final String base;
   late final Main main;
   late final int visibility;
@@ -35,9 +33,9 @@ class WeatherModel {
 
   WeatherModel.fromJson(Map<String, dynamic> json) {
     coord = Coord.fromJson(json['coord'] ?? {});
-   
 
-             final weatherJson = json['weather'] as List<dynamic>?; // Check if 'weather' key is present
+    final weatherJson =
+        json['weather'] as List<dynamic>?; // Check if 'weather' key is present
     weather = weatherJson != null
         ? List<Weather>.from(weatherJson.map((x) => Weather.fromJson(x)))
         : [];
@@ -95,22 +93,24 @@ class Coord {
 }
 
 class Weather {
-  Weather({
-    required this.id,
-    required this.main,
-    required this.description,
-    required this.icon,
-  });
+  Weather(
+      {required this.id,
+      required this.main,
+      required this.description,
+      required this.icon,
+      required this.path});
   late final int id;
   late final String main;
   late final String description;
   late final String icon;
+  String path = '';
 
   Weather.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     main = json['main'];
     description = json['description'];
     icon = json['icon'];
+    path = "assets/weather/$icon.png";
   }
 
   Map<String, dynamic> toJson() {
@@ -119,6 +119,7 @@ class Weather {
     _data['main'] = main;
     _data['description'] = description;
     _data['icon'] = icon;
+
     return _data;
   }
 }

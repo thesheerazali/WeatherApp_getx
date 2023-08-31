@@ -1,5 +1,3 @@
-
-
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 
@@ -8,12 +6,11 @@ import 'package:weather_app_getx/services/location_service.dart';
 import '../models/search_model.dart';
 import '../services/fetch_waether_api.dart';
 
-
 class HomeScreenController extends GetxController {
   final WeatherService _weatherService = WeatherService();
   final LocationService _locationService = LocationService();
 
-   Rx<WeatherModel?> weather = WeatherModel.empty().obs;
+  Rx<WeatherModel> weather = WeatherModel.empty().obs;
   final RxDouble _latitude = 0.0.obs;
   final RxDouble _longitude = 0.0.obs;
   RxString city = ''.obs;
@@ -23,10 +20,11 @@ class HomeScreenController extends GetxController {
   RxBool checkLoading() => isLoding;
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
     if (isLoding.isTrue) {
-      _getUserLocation();
+      await _getUserLocation();
+      
     }
   }
 
@@ -58,9 +56,8 @@ class HomeScreenController extends GetxController {
       // Handle the error gracefully, show a message, etc.
     }
   }
-  
 
-   getUserAdress() async {
+  getUserAdress() async {
     List<Placemark> placeMark =
         await placemarkFromCoordinates(_latitude.value, _longitude.value);
     print(placeMark);
@@ -68,6 +65,4 @@ class HomeScreenController extends GetxController {
     city.value = place.locality!;
     cityArea!.value = place.subLocality!;
   }
-
-   
 }

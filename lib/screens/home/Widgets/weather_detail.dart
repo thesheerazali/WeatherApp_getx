@@ -40,7 +40,7 @@ class WeatherDetail extends GetView<HomeScreenController> {
                 Wrap(
                   children: [
                     Text(
-                      '${weather.value?.wind.speed.round()}',
+                      '${weather.value.wind.speed.round()}',
                       style: const TextStyle(
                           color: Colors.white,
                           fontSize: 25,
@@ -89,7 +89,7 @@ class WeatherDetail extends GetView<HomeScreenController> {
                 Wrap(
                   children: [
                     Text(
-                      '${weather.value?.clouds.all}',
+                      '${weather.value.clouds.all}',
                       style: const TextStyle(
                           color: Colors.white,
                           fontSize: 25,
@@ -136,7 +136,7 @@ class WeatherDetail extends GetView<HomeScreenController> {
                 Wrap(
                   children: [
                     Text(
-                      '${weather.value?.main.humidity}',
+                      '${weather.value.main.humidity}',
                       style: const TextStyle(
                           color: Colors.white,
                           fontSize: 25,

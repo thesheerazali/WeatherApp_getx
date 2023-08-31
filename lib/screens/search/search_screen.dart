@@ -145,7 +145,8 @@ class SearchScreen extends GetView<SearchScreenController> {
                                       fontWeight: FontWeight.w400),
                                 ),
                                 trailing: Image.asset(
-                                  "assets/weather/${weather.weather[0].icon}.png",
+                                  // "assets/weather/${weather.weather[0].icon}.png",
+                                  weather.weather[0].path,
                                   height: Get.height * .07,
                                 ),
                                 onTap: () {

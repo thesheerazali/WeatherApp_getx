@@ -9,14 +9,13 @@ class CurrentWeather extends GetView<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      final weather = controller.weather;
-
       // Display weather data
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            "assets/weather/${weather.value!.weather[0].icon}.png",
+            // "assets/weather/${controller.weather.value.weather[0].icon}.png",
+            controller.weather.value.weather[0].path,
             height: Get.height * .20,
           ),
           const SizedBox(
@@ -34,7 +33,7 @@ class CurrentWeather extends GetView<HomeScreenController> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '${weather.value?.main.temp.round() ?? "20"}',
+                  '${controller.weather.value.main.temp.round()}',
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 100,
@@ -54,7 +53,7 @@ class CurrentWeather extends GetView<HomeScreenController> {
             ),
           ),
           Text(
-            weather.value!.weather[0].description,
+            controller.weather.value!.weather[0].description,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 30,

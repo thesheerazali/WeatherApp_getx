@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_app_getx/main.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:weather_app_getx/constants/routes.dart';
+
+import 'package:weather_app_getx/screens/home/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -30,13 +33,8 @@ class _SplashScreenState extends State<SplashScreen>
     });
 
     // Navigate to home screen after 5 seconds
-    Timer(Duration(seconds: 5), () {
-      Get.off(() => MainScreen());
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => MainScreen(),
-      //     ));
+    Timer(const Duration(seconds: 3), () {
+      Get.offNamed(homeScreen);
     });
   }
 
@@ -49,31 +47,38 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 186, 204, 236).withOpacity(0.8),
-      body: Center(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Color.fromRGBO(147, 34, 237, 1),
+            Color.fromRGBO(234, 156, 236, 1),
+            Color.fromRGBO(231, 153, 181, 1),
+            Color.fromRGBO(255, 234, 180, 1),
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) {
-                return Transform.translate(
-                  offset: Offset(_animation.value, 0),
-                  child: child,
-                );
-              },
-              child: Center(
-                child: Image.asset('assets/icons/splashIcon.png', height: 100),
-              ), // Replace with your image path
+            const SizedBox(
+              height: 40,
             ),
-            SizedBox(height: 20),
-            Text(
-              'Weather App',
-              style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Text(
+                'Weather \n App',
+                style: GoogleFonts.ultra(
+                    fontSize: 48,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white),
+              ),
             ),
+            Center(
+              child: Image.asset(
+                'assets/icons/splashCloud.png',
+                height: 300,
+              ),
+            ), // Replace with your image path
           ],
         ),
       ),

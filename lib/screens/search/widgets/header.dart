@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app_getx/controllers/home_screen_controller.dart';
 
 import '../../../models/search_model.dart';
 
@@ -20,18 +18,22 @@ class DetailScreenHeader extends StatelessWidget {
         Row(
           children: [
             Text(
-              "${weather.name},",
-              style: const TextStyle(fontSize: 50, color: Colors.black),
+              "${weather.name}, ",
+              style: const TextStyle(
+                  fontSize: 50,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900),
             ),
             Text(
               weather.sys!.country,
-              style: const TextStyle(fontSize: 40, color: Colors.black),
+              style: const TextStyle(fontSize: 40, color: Colors.white),
             ),
           ],
         ),
         Text(
           date,
-          style: TextStyle(fontSize: 15, color: Colors.black),
+          style: const TextStyle(
+              fontSize: 15, color: Colors.black54, fontWeight: FontWeight.w900),
         ),
       ],
     );

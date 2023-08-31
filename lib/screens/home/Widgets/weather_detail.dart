@@ -16,14 +16,16 @@ class WeatherDetail extends GetView<HomeScreenController> {
           height: 100,
           width: Get.width * .25,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            // Container background color with transparency
-            boxShadow: [
-              BoxShadow(
-                  color:
-                      const Color.fromARGB(255, 186, 204, 236).withOpacity(0.8))
-            ],
-          ),
+              borderRadius: BorderRadius.circular(10),
+              gradient: const LinearGradient(
+                colors: [
+                  Color.fromRGBO(147, 81, 148, 1),
+                  Color.fromRGBO(91, 168, 209, 1),
+                ],
+                stops: [0.06, 0.83],
+                begin: Alignment(1, 0),
+                end: Alignment(0, 1),
+              )),
           child: Obx(() {
             final weather = controller.weather;
 
@@ -40,7 +42,7 @@ class WeatherDetail extends GetView<HomeScreenController> {
                     Text(
                       '${weather.value?.wind.speed.round()}',
                       style: const TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 25,
                           fontWeight: FontWeight.w500),
                     ),
@@ -60,16 +62,19 @@ class WeatherDetail extends GetView<HomeScreenController> {
           height: 100,
           width: Get.width * .25,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            // Container background color with transparency
-            boxShadow: [
-              BoxShadow(
-                
-                  
-                  color:
-                      const Color.fromARGB(255, 186, 204, 236).withOpacity(0.8))
-            ],
-          ),
+              borderRadius: BorderRadius.circular(10),
+              gradient: const LinearGradient(
+                colors: [
+                  Color.fromRGBO(183, 72, 184, 1),
+                  Color.fromRGBO(91, 168, 209, 1),
+                ],
+                stops: [0.06, 0.83],
+                begin: Alignment(1, 0),
+                end: Alignment(0, 1),
+              )
+              // Container background color with transparency
+
+              ),
           child: Obx(() {
             final weather = controller.weather;
 
@@ -86,7 +91,7 @@ class WeatherDetail extends GetView<HomeScreenController> {
                     Text(
                       '${weather.value?.clouds.all}',
                       style: const TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 25,
                           fontWeight: FontWeight.w500),
                     ),
@@ -106,14 +111,17 @@ class WeatherDetail extends GetView<HomeScreenController> {
           height: 100,
           width: Get.width * .25,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            // Container background color with transparency
-            boxShadow: [
-              BoxShadow(
-                  color:
-                      const Color.fromARGB(255, 186, 204, 236).withOpacity(0.8))
-            ],
-          ),
+              borderRadius: BorderRadius.circular(10),
+              // Container background color with transparency
+              gradient: const LinearGradient(
+                colors: [
+                  Color.fromRGBO(183, 72, 184, 1),
+                  Color.fromRGBO(91, 168, 209, 1),
+                ],
+                stops: [0.06, 0.83],
+                begin: Alignment(1, 0),
+                end: Alignment(0, 1),
+              )),
           child: Obx(() {
             final weather = controller.weather;
 
@@ -130,7 +138,7 @@ class WeatherDetail extends GetView<HomeScreenController> {
                     Text(
                       '${weather.value?.main.humidity}',
                       style: const TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 25,
                           fontWeight: FontWeight.w500),
                     ),

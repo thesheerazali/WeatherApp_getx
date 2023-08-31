@@ -12,49 +12,55 @@ class SearchCurrentDetail extends StatelessWidget {
   const SearchCurrentDetail({super.key, required this.weather});
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.all(10),
-        height: 200,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          // Container background color with transparency
-          boxShadow: [
-            BoxShadow(
-                // blurRadius: 3,
-                color:
-                    const Color.fromARGB(255, 186, 204, 236).withOpacity(0.8))
-          ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          "assets/weather/${weather.weather[0].icon}.png",
+          height: Get.height * .20,
         ),
-
-        // Display weather data
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image.asset(
-              "assets/weather/${weather.weather[0].icon}.png",
-            ),
-            Row(
-              children: [
-                Text(
-                  '${weather.main.temp.round()}',
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 100,
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 1,
+          width: 150,
+          color: Colors.white,
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: Get.height * .03),
+          child: Row(
+            // crossAxisAlignment: WrapCrossAlignment.values[0],
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '${weather.main.temp.round()}',
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 100,
+                    fontWeight: FontWeight.bold),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: Get.height * .08),
+                child: const Text(
+                  "°C",
+                  style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 60),
-                  child: Text(
-                    "°",
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ));
+              ),
+            ],
+          ),
+        ),
+        Text(
+          weather.weather[0].description,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 30,
+          ),
+        ),
+      ],
+    );
   }
 }

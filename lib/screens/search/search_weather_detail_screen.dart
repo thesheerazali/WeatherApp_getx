@@ -17,27 +17,39 @@ class WeatherDetailScreen extends GetView<SearchScreenController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: ListView(
-        padding: EdgeInsets.symmetric(
-            horizontal: Get.width * 0.08, vertical: Get.height * 0.06),
-        scrollDirection: Axis.vertical,
-        children: [
-          SizedBox(
-            height: Get.height * .05,
+      resizeToAvoidBottomInset: false,
+//      backgroundColor: Colors.white,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Color.fromRGBO(147, 34, 237, 1),
+            Color.fromRGBO(234, 156, 236, 1),
+            Color.fromRGBO(231, 153, 181, 1),
+            Color.fromRGBO(255, 234, 180, 1),
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: Get.width * 0.08, vertical: Get.height * 0.06),
+          child: Column(
+            children: [
+              SizedBox(
+                height: Get.height * .05,
+              ),
+              DetailScreenHeader(weather: weather),
+              SizedBox(
+                height: Get.height * .07,
+              ),
+              SearchCurrentDetail(weather: weather),
+              SizedBox(
+                height: Get.height * .07,
+              ),
+              SearchWeatherDetail(
+                weather: weather,
+              ),
+            ],
           ),
-          DetailScreenHeader(weather: weather),
-          SizedBox(
-            height: Get.height * .1,
-          ),
-          SearchCurrentDetail(weather: weather),
-          SizedBox(
-            height: Get.height * .1,
-          ),
-          SearchWeatherDetail(
-            weather: weather,
-          ),
-        ],
+        ),
       ),
     );
   }

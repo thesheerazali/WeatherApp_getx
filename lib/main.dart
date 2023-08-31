@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:weather_app_getx/constants/routes.dart';
 
-
 import 'package:weather_app_getx/utils/route_generator.dart';
 
 void main() {
@@ -17,7 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     return GetMaterialApp(
       color: Colors.white,
       debugShowCheckedModeBanner: false,

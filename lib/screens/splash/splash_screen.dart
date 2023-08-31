@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     // Navigate to home screen after 5 seconds
     Timer(const Duration(seconds: 3), () {
-      Get.offNamed(homeScreen);
+      Get.off(HomeScreen());
     });
   }
 

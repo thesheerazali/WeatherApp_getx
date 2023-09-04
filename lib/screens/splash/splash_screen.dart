@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weather_app_getx/constants/routes.dart';
+
 
 import 'package:weather_app_getx/screens/home/home_screen.dart';
 

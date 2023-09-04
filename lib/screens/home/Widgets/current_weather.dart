@@ -53,7 +53,7 @@ class CurrentWeather extends GetView<HomeScreenController> {
             ),
           ),
           Text(
-            controller.weather.value!.weather[0].description,
+            controller.weather.value.weather[0].description,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 30,

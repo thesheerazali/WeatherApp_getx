@@ -9,25 +9,22 @@ class WeatherModel {
     required this.clouds,
     required this.dt,
     required this.sys,
-    required this.timezone,
-    required this.id,
     required this.name,
     required this.cod,
     required String cityName,
   });
-  late final Coord coord;
+  Coord coord = Coord(lon: 0.0, lat: 0.0);
   List<Weather> weather = [];
-  late final String base;
-  late final Main main;
-  late final int visibility;
-  late final Wind wind;
-  late final Clouds clouds;
-  late final int dt;
-  Sys? sys;
-  late final int timezone;
-  late final int id;
-  late final String name;
-  late final int cod;
+  String base = "";
+  Main main = Main(temp: 0.0, feelsLike: 0.0, tempMin: 0.0, tempMax: 0.0, pressure: 0, humidity: 0, seaLevel: 0, grndLevel: 0);
+  int visibility = 0;
+  Wind wind = Wind(speed: 0.0, deg: 0);
+  Clouds clouds = Clouds(all: 0);
+  int dt = 0;
+  Sys sys = Sys(type: 0, id: 0, country: "", sunrise: 0, sunset: 0);
+
+  String name ="";
+int cod = 0;
 
   WeatherModel.empty();
 
@@ -46,8 +43,7 @@ class WeatherModel {
     clouds = Clouds.fromJson(json['clouds'] ?? {});
     dt = json['dt'];
     sys = Sys.fromJson(json['sys'] ?? {});
-    timezone = json['timezone'] ?? 0; // Provide a default value if necessary
-    id = json['id'] ?? 0; // Provide a default value if necessary
+  // Provide a default value if necessary
     name = json['name'] ?? '';
     cod = json['cod'] ?? 0; // Provide a default value if necessary
   }
@@ -62,9 +58,8 @@ class WeatherModel {
     _data['wind'] = wind.toJson();
     _data['clouds'] = clouds.toJson();
     _data['dt'] = dt;
-    _data['sys'] = sys!.toJson();
-    _data['timezone'] = timezone;
-    _data['id'] = id;
+    _data['sys'] = sys.toJson();
+   
     _data['name'] = name;
     _data['cod'] = cod;
     return _data;

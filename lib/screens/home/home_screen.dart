@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:weather_app_getx/constants/routes.dart';
+
 import 'package:weather_app_getx/controllers/home_screen_controller.dart';
 import 'package:weather_app_getx/screens/search/search_screen.dart';
 
